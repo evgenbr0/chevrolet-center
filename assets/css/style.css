@@ -82,6 +82,7 @@ main:focus, main:focus-visible { outline: none; }
 /* ---------- Buttons ---------- */
 .btn {
   --py: .82rem; --px: 1.5rem;
+  position: relative; overflow: hidden;
   display: inline-flex; align-items: center; justify-content: center; gap: .55rem;
   padding: var(--py) var(--px);
   border-radius: var(--radius-sm);
@@ -89,6 +90,14 @@ main:focus, main:focus-visible { outline: none; }
   text-transform: uppercase; letter-spacing: .04em;
   transition: transform .22s var(--ease), box-shadow .22s var(--ease), background .22s, color .22s, border-color .22s;
 }
+/* премиальный блик при наведении */
+.btn::after {
+  content: ""; position: absolute; top: 0; bottom: 0; left: 0; width: 55%;
+  background: linear-gradient(100deg, transparent, rgba(255,255,255,.5), transparent);
+  transform: translateX(-200%) skewX(-18deg);
+  pointer-events: none;
+}
+.btn:hover::after { transform: translateX(360%) skewX(-18deg); transition: transform .65s var(--ease); }
 .btn:active { transform: translateY(1px); }
 .btn--lg { --py: 1.02rem; --px: 1.9rem; font-size: 1rem; }
 .btn--block { width: 100%; }
@@ -115,7 +124,7 @@ main:focus, main:focus-visible { outline: none; }
 .header__inner { display: flex; align-items: center; gap: 1.2rem; height: 72px; }
 
 .brand { display: inline-flex; align-items: center; gap: .6rem; }
-.brand__bowtie { display: grid; place-items: center; width: 46px; height: 30px; background: var(--gold); border-radius: 6px; padding: 0 5px; }
+.brand__bowtie { display: grid; place-items: center; width: 50px; height: 30px; background: linear-gradient(135deg, var(--gold-2), var(--gold-deep)); border-radius: 7px; padding: 0 7px; box-shadow: 0 4px 12px -4px rgba(207,148,26,.55); }
 .brand__bowtie svg { width: 100%; height: auto; fill: var(--navy); }
 .brand__text { font-family: var(--ff-head); font-weight: 700; font-size: 1.18rem; letter-spacing: .06em; line-height: 1; color: var(--navy); display: flex; flex-direction: column; }
 .brand__text small { font-family: var(--ff-body); font-weight: 500; font-size: .58rem; letter-spacing: .12em; color: var(--ink-mute); margin-top: .28rem; text-transform: uppercase; }
@@ -150,7 +159,7 @@ main:focus, main:focus-visible { outline: none; }
 
 .hero__panel { background: var(--navy); color: #fff; border-radius: var(--radius-lg); padding: 1.7rem; box-shadow: var(--shadow); position: relative; }
 .hero__panel-top { display: flex; align-items: center; gap: .8rem; padding-bottom: 1.1rem; border-bottom: 1px solid var(--line-dark); margin-bottom: 1.1rem; }
-.hero__panel-bowtie { display: grid; place-items: center; width: 50px; height: 32px; background: var(--gold); border-radius: 7px; padding: 0 6px; flex: none; }
+.hero__panel-bowtie { display: grid; place-items: center; width: 56px; height: 34px; background: linear-gradient(135deg, var(--gold-2), var(--gold-deep)); border-radius: 8px; padding: 0 8px; flex: none; box-shadow: 0 6px 16px -6px rgba(207,148,26,.6); }
 .hero__panel-bowtie svg { width: 100%; fill: var(--navy); }
 .hero__panel-top strong { display: block; font-family: var(--ff-head); font-size: 1.16rem; }
 .hero__panel-top span { font-size: .86rem; color: rgba(255,255,255,.65); }
@@ -420,4 +429,99 @@ textarea.field__input { resize: vertical; min-height: 90px; }
   .hero__actions .btn { width: 100%; }
   .btn { white-space: normal; text-align: center; }
   .brand__text small { display: none; }
+}
+
+/* ============================================================
+   PREMIUM ENHANCEMENTS — эмблема, анимации, микро-взаимодействия
+   ============================================================ */
+
+/* Мягкое золотое свечение в hero */
+.hero::before {
+  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background: radial-gradient(1100px 480px at 82% -12%, rgba(239,176,54,.12), transparent 68%);
+}
+.hero__inner { position: relative; z-index: 1; }
+
+/* Крупная фирменная эмблема Chevrolet с бликом и парением */
+.hero__emblem {
+  position: absolute; z-index: 0; pointer-events: none;
+  top: 6%; right: -6%;
+  width: min(54vw, 660px); aspect-ratio: 150 / 42;
+  background: linear-gradient(135deg, #f8d27a 0%, #efb036 46%, #cf941a 100%);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20150%2042'%3E%3Cpath%20d='M0,12H45L57,0H93L105,12H150V30H105L93,42H57L45,30H0Z'%20fill='%23000'/%3E%3C/svg%3E") center/contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20150%2042'%3E%3Cpath%20d='M0,12H45L57,0H93L105,12H150V30H105L93,42H57L45,30H0Z'%20fill='%23000'/%3E%3C/svg%3E") center/contain no-repeat;
+  opacity: .14;
+  overflow: hidden;
+  animation: emblemFloat 9s ease-in-out infinite;
+}
+.hero__emblem::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(110deg, transparent 38%, rgba(255,255,255,.9) 50%, transparent 62%);
+  transform: translateX(-130%);
+  animation: emblemShine 6.5s ease-in-out infinite;
+}
+@keyframes emblemFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-16px); } }
+@keyframes emblemShine { 0% { transform: translateX(-130%); } 55%,100% { transform: translateX(130%); } }
+
+/* Плавающий бейдж рейтинга на панели */
+.hero__rating {
+  position: absolute; top: -18px; right: -8px; z-index: 4;
+  display: flex; align-items: center; gap: .55rem;
+  background: #fff; color: var(--navy);
+  padding: .5rem .8rem; border-radius: 13px;
+  border: 1px solid var(--line);
+  box-shadow: 0 16px 30px -12px rgba(12,35,64,.45);
+  animation: badgeFloat 4.5s ease-in-out infinite;
+}
+.hero__rating b { font-family: var(--ff-head); font-weight: 700; font-size: 1.55rem; line-height: 1; }
+.hero__rating span { display: flex; flex-direction: column; line-height: 1.15; font-size: .72rem; color: var(--ink-soft); }
+.hero__rating i { font-style: normal; color: var(--gold-deep); letter-spacing: 1px; font-size: .78rem; }
+@keyframes badgeFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+
+/* Подчёркивание навигации */
+.nav__link::after {
+  content: ""; position: absolute; left: .75rem; right: .75rem; bottom: .32rem; height: 2px;
+  background: var(--gold-deep); border-radius: 2px;
+  transform: scaleX(0); transform-origin: left; transition: transform .26s var(--ease);
+}
+.nav__link:hover::after { transform: scaleX(1); }
+
+/* Микро-анимация иконок услуг и преимуществ */
+.srv__ico, .why__ico { transition: transform .3s var(--ease), background .3s; }
+.srv:hover .srv__ico { transform: scale(1.07) rotate(-4deg); }
+.srv:hover .srv__ico svg { stroke: var(--gold-2); }
+.why__item:hover .why__ico { background: var(--gold); transform: scale(1.05); }
+.why__item:hover .why__ico svg { stroke: var(--navy); }
+
+/* Бегущая лента моделей */
+.marquee {
+  overflow: hidden; padding: .4rem 0;
+  -webkit-mask: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+          mask: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+}
+.marquee__inner { display: flex; width: max-content; animation: marquee 40s linear infinite; }
+.marquee:hover .marquee__inner { animation-play-state: paused; }
+.models__row { flex-wrap: nowrap; justify-content: flex-start; gap: .7rem; padding-right: .7rem; }
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+/* Пульсация выделенного тарифа */
+.tier--featured { animation: featuredGlow 3.2s ease-in-out infinite; }
+@keyframes featuredGlow {
+  0%,100% { box-shadow: 0 24px 50px -24px rgba(207,148,26,.45); }
+  50%     { box-shadow: 0 26px 62px -20px rgba(207,148,26,.62); }
+}
+
+/* Аватары отзывов — лёгкое «оживление» */
+.review:hover .review__ava { transform: scale(1.08); transition: transform .3s var(--ease); }
+
+@media (max-width: 760px) {
+  .hero__emblem { top: 2%; right: -14%; width: 90vw; opacity: .1; }
+  .hero__rating { top: -14px; right: 4px; padding: .45rem .7rem; }
+  .hero__rating b { font-size: 1.35rem; }
+}
+
+/* Уважение к prefers-reduced-motion для новых анимаций */
+@media (prefers-reduced-motion: reduce) {
+  .hero__emblem, .hero__emblem::after, .hero__rating, .marquee__inner, .tier--featured { animation: none !important; }
+  .hero__emblem::after { display: none; }
 }

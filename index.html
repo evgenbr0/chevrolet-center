@@ -60,7 +60,7 @@
     <div class="wrap header__inner">
       <a class="brand" href="#hero" aria-label="Chevrolet Center — на главную">
         <span class="brand__bowtie" aria-hidden="true">
-          <svg viewBox="0 0 48 20"><path d="M2 7h14l4-5h8l4 5h14v6H32l-4 5h-8l-4-5H2z"/></svg>
+          <svg viewBox="0 0 150 42"><path d="M0 12H45L57 0H93L105 12H150V30H105L93 42H57L45 30H0Z"/></svg>
         </span>
         <span class="brand__text">CHEVROLET<small>CENTER · сервис</small></span>
       </a>
@@ -89,6 +89,7 @@
     <!-- ===== Hero ===== -->
     <section class="hero" id="hero">
       <span class="hero__shape" aria-hidden="true"></span>
+      <span class="hero__emblem" aria-hidden="true"></span>
       <div class="wrap hero__inner">
         <div class="hero__content reveal">
           <span class="kicker"><i></i> Профильный сервис Chevrolet</span>
@@ -109,9 +110,13 @@
         </div>
 
         <aside class="hero__panel reveal" aria-label="Запись и преимущества">
+          <div class="hero__rating">
+            <b>4.9</b>
+            <span><i aria-hidden="true">★★★★★</i>2 300+ отзывов</span>
+          </div>
           <div class="hero__panel-top">
             <span class="hero__panel-bowtie" aria-hidden="true">
-              <svg viewBox="0 0 48 20"><path d="M2 7h14l4-5h8l4 5h14v6H32l-4 5h-8l-4-5H2z"/></svg>
+              <svg viewBox="0 0 150 42"><path d="M0 12H45L57 0H93L105 12H150V30H105L93 42H57L45 30H0Z"/></svg>
             </span>
             <div>
               <strong>Запись за 2 минуты</strong>
@@ -268,13 +273,20 @@
 
     <!-- ===== Models strip ===== -->
     <section class="models" aria-label="Модели Chevrolet, которые мы обслуживаем">
-      <div class="wrap">
-        <p class="models__label reveal">Обслуживаем все поколения Chevrolet:</p>
-        <ul class="models__list reveal">
-          <li>Niva</li><li>Lacetti</li><li>Cruze</li><li>Aveo</li><li>Cobalt</li>
-          <li>Lanos</li><li>Spark</li><li>Captiva</li><li>Orlando</li><li>Epica</li>
-          <li>Malibu</li><li>Tahoe</li><li>TrailBlazer</li><li>Traverse</li><li>Camaro</li>
-        </ul>
+      <div class="wrap"><p class="models__label reveal">Обслуживаем все поколения Chevrolet</p></div>
+      <div class="marquee reveal">
+        <div class="marquee__inner">
+          <ul class="models__list models__row">
+            <li>Niva</li><li>Lacetti</li><li>Cruze</li><li>Aveo</li><li>Cobalt</li>
+            <li>Lanos</li><li>Spark</li><li>Captiva</li><li>Orlando</li><li>Epica</li>
+            <li>Malibu</li><li>Tahoe</li><li>TrailBlazer</li><li>Traverse</li><li>Camaro</li>
+          </ul>
+          <ul class="models__list models__row" aria-hidden="true">
+            <li>Niva</li><li>Lacetti</li><li>Cruze</li><li>Aveo</li><li>Cobalt</li>
+            <li>Lanos</li><li>Spark</li><li>Captiva</li><li>Orlando</li><li>Epica</li>
+            <li>Malibu</li><li>Tahoe</li><li>TrailBlazer</li><li>Traverse</li><li>Camaro</li>
+          </ul>
+        </div>
       </div>
     </section>
 
@@ -555,7 +567,7 @@
     <div class="wrap footer__inner">
       <div class="footer__brand">
         <a class="brand brand--light" href="#hero" aria-label="Chevrolet Center">
-          <span class="brand__bowtie" aria-hidden="true"><svg viewBox="0 0 48 20"><path d="M2 7h14l4-5h8l4 5h14v6H32l-4 5h-8l-4-5H2z"/></svg></span>
+          <span class="brand__bowtie" aria-hidden="true"><svg viewBox="0 0 150 42"><path d="M0 12H45L57 0H93L105 12H150V30H105L93 42H57L45 30H0Z"/></svg></span>
           <span class="brand__text">CHEVROLET<small>CENTER · сервис</small></span>
         </a>
         <p class="footer__about">Независимый специализированный автосервис по обслуживанию и ремонту автомобилей Chevrolet. Не является официальным дилером Chevrolet / General Motors.</p>
