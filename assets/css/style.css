@@ -445,12 +445,12 @@ textarea.field__input { resize: vertical; min-height: 90px; }
 /* Крупная фирменная эмблема Chevrolet с бликом и парением */
 .hero__emblem {
   position: absolute; z-index: 0; pointer-events: none;
-  top: 6%; right: -6%;
-  width: min(54vw, 660px); aspect-ratio: 150 / 42;
+  top: 5%; right: -7%;
+  width: min(52vw, 640px); aspect-ratio: 612 / 220;
   background: linear-gradient(135deg, #f8d27a 0%, #efb036 46%, #cf941a 100%);
-  -webkit-mask: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20150%2042'%3E%3Cpath%20d='M0,12H45L57,0H93L105,12H150V30H105L93,42H57L45,30H0Z'%20fill='%23000'/%3E%3C/svg%3E") center/contain no-repeat;
-          mask: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20150%2042'%3E%3Cpath%20d='M0,12H45L57,0H93L105,12H150V30H105L93,42H57L45,30H0Z'%20fill='%23000'/%3E%3C/svg%3E") center/contain no-repeat;
-  opacity: .14;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20612%20220'%3E%3Cpath%20d='M409.7,0H201.8V48H45.8L3,84.3V135.7L45.8,172H201.8V220H409.7V172H566.2L609,135.7V84.3L566.2,48H409.7V0Z'%20fill='%23000'/%3E%3C/svg%3E") center/contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20612%20220'%3E%3Cpath%20d='M409.7,0H201.8V48H45.8L3,84.3V135.7L45.8,172H201.8V220H409.7V172H566.2L609,135.7V84.3L566.2,48H409.7V0Z'%20fill='%23000'/%3E%3C/svg%3E") center/contain no-repeat;
+  opacity: .18;
   overflow: hidden;
   animation: emblemFloat 9s ease-in-out infinite;
 }
